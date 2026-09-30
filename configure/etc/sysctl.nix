@@ -17,4 +17,15 @@
       kern.ipc.maxsockbuf=4194304
    '';
   };
+
+  launchd.daemons."sysctl-loader" = {
+    script = ''
+      /usr/sbin/sysctl -f /etc/sysctl.conf
+    '';
+    serviceConfig = {
+      RunAtLoad = true;
+      StandardOutPath = "/var/log/sysctl-loader.out.log";
+      StandardErrorPath = "/var/log/sysctl-loader.err.log";
+    };
+  };
 }

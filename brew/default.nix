@@ -29,6 +29,8 @@ in
       "1password"
       "telegram"
       "ungoogled-chromium"
+      "helium-browser"
+      "duckduckgo"
     ];
   };
   

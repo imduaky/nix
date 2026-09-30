@@ -35,7 +35,7 @@ in
         Hostname = "ssh.github.com";
         User = "git";
         # use 443 to bypass 22 block in some servers
-        Port = 443;
+        Port = 22;
       };
     };
   };

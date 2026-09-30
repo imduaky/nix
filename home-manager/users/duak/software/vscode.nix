@@ -52,16 +52,18 @@ in
       be5invis.vscode-icontheme-nomo-dark
     ] ++ [
       # agents
-      anthropic.claude-code
+      # anthropic.claude-code
     ];
   
   programs.vscodium.profiles.default = {
     userSettings = {
       "files.autoSave" = "off";
       "update.mode" = "none";
+
       ## Extension
       "extensions.autoCheckUpdates" = false;
-      "extensions.autoUpdate" = false;
+      "extensions.autoUpdate" = "off";
+
       ## Editor
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
       "editor.formatOnSave" = true;
@@ -91,6 +93,7 @@ in
         "https://json.schemastore.org/" = true;
         "https://raw.githubusercontent.com/devcontainers/spec/" = true;
         "https://raw.githubusercontent.com/microsoft/vscode/" = true;
+        "https://raw.githubusercontent.com/SagerNet/sing-box/" = true;
         "https://schemastore.azurewebsites.net/" = true;
         "https://www.schemastore.org/" = true;
       };
@@ -131,8 +134,6 @@ in
       "docker.extension.enableComposeLanguageServer" = true;
       "docker.extension.editor.dockerfileBuildStageDecorationLines" = true;
       "docker.lsp.telemetry" = "off";
-
-      "claudeCode.preferredLocation" = "panel";
     };
   };
   home.file."Library/Application Support/VSCodium/product.json" = {

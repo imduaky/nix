@@ -4,7 +4,7 @@
   environment.systemPackages =
     with pkgs; [ 
     vim git git-lfs jq fastfetch tree
-    smartmontools zstd
+    smartmontools zstd fpm nfpm
   ] ++ [
     wget dig iperf3 nexttrace rclone
   ] ++ [
@@ -12,7 +12,7 @@
     gnupg gawk gnused gnumake 
     gnutar openssl openssh 
     coreutils moreutils cmake 
-    expect qemu findutils
+    expect qemu findutils ripgrep-all ripgrep
   ] ++ [
     age sops
   ] ++ [
