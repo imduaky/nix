@@ -85,9 +85,9 @@ in
       "yaml.validate" = true;
       "yaml.format.enable" = true;
       ## typescript
-      "ts.inlayHints.parameterTypes.enabled" = true;
-      "ts.inlayHints.variableTypes.enabled" = true;
-      "ts.inlayHints.functionLikeReturnTypes.enabled" = true;
+      "js/ts.inlayHints.parameterTypes.enabled" = true;
+      "js/ts.inlayHints.variableTypes.enabled" = true;
+      "js/ts.inlayHints.functionLikeReturnTypes.enabled" = true;
       ## plguin
       "redhat.telemetry.enabled" = false;
       "json.schemaDownload.trustedDomains" = {
