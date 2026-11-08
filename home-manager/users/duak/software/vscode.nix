@@ -34,8 +34,8 @@ in
       liuchao.go-struct-tag
       maracko.json-to-go
     ] ++ [
-      # python
-      ms-python.python ms-python.debugpy
+      # python -broken
+      ms-python.python  ms-python.debugpy 
       ms-python.vscode-python-envs kevinrose.vsc-python-indent
     ] ++ [
       # toolchain
@@ -84,6 +84,10 @@ in
       ## YAML
       "yaml.validate" = true;
       "yaml.format.enable" = true;
+      ## typescript
+      "ts.inlayHints.parameterTypes.enabled" = true;
+      "ts.inlayHints.variableTypes.enabled" = true;
+      "ts.inlayHints.functionLikeReturnTypes.enabled" = true;
       ## plguin
       "redhat.telemetry.enabled" = false;
       "json.schemaDownload.trustedDomains" = {
@@ -131,9 +135,12 @@ in
         "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
         "tag:yaml.org,2002:python/object/apply:pymdownx.slugs.slugify mapping"
       ];
+      # docker
       "docker.extension.enableComposeLanguageServer" = true;
       "docker.extension.editor.dockerfileBuildStageDecorationLines" = true;
       "docker.lsp.telemetry" = "off";
+      # tailwind
+      "tailwindCSS.experimental.classRegex" = [["className\\s*:\\s*['\"]([^'\"]*)['\"]"]];
     };
   };
   home.file."Library/Application Support/VSCodium/product.json" = {

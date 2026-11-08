@@ -16,7 +16,7 @@
   ] ++ [
     age sops
   ] ++ [
-    lima-full apacheHttpd ffmpeg
+    lima-full apacheHttpd ffmpeg android-tools
   ] ++ [
     # curl
     (pkgs.curl.override {

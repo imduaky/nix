@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # nixpkgs-master.url = "github:Nixos/nixpkgs/master";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -34,6 +35,8 @@
     homebrew-tap-duongductrong-snapzy.flake = false;
     homebrew-tap-jorgelbg.url = "github:jorgelbg/homebrew-tap";
     homebrew-tap-jorgelbg.flake = false;
+    homebrew-tap-jurplel.url = "github:jurplel/homebrew-tap";
+    homebrew-tap-jurplel.flake = false;
   };
 
   outputs = inputs@{ self,
@@ -42,7 +45,7 @@
     # home brews
     nix-homebrew, homebrew-core, homebrew-cask, 
     homebrew-tap-tinypkg, homebrew-tap-duongductrong-snapzy, 
-    homebrew-tap-jorgelbg, ... }: 
+    homebrew-tap-jorgelbg, homebrew-tap-jurplel, ... }: 
    
     let
       hostName = "duakMac";
@@ -55,6 +58,18 @@
       darwinConfigurations."${hostName}" = nix-darwin.lib.darwinSystem {
         system = "${hostPlatform}";
         modules = [
+          #{
+          #  nixpkgs.overlays = [
+          #    (final: prev: {
+          #      # legacyPackages ignores our nixpkgs.config (allowUnfree), so
+          #      # import master explicitly and reuse the system's config.
+          #      jetbrains-toolbox = (import nixpkgs-master {
+          #        inherit (prev.stdenv.hostPlatform) system;
+          #        inherit (prev) config;
+          #      }).jetbrains-toolbox;
+          #    })
+          #  ];
+          #}
           sops-nix.darwinModules.sops
           mac-app-util.darwinModules.default
           nix-homebrew.darwinModules.nix-homebrew

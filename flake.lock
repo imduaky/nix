@@ -61,11 +61,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790365885,
-        "narHash": "sha256-iQ0ebhiVo64NktTnwft9hNxlFu4j5cvljVxyJaEVIP4=",
+        "lastModified": 1793193205,
+        "narHash": "sha256-X6xa6sGA7RnJQuZGbFMC+K+KToWAlBDCCjJXfTwEPsw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "7b4c5ec4bedaf1e062bbc1bcaeddbc6bd242aa1b",
+        "rev": "095fef2f265c3c0da4fe315efba8f8a04495ab34",
         "type": "github"
       },
       "original": {
@@ -78,11 +78,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1790483322,
-        "narHash": "sha256-r5CWtpvXHP9vTi9Gqg+hLFmWhKqCGASYJdx6X5/1fnM=",
+        "lastModified": 1793510068,
+        "narHash": "sha256-2sGlUCzRDKMfCkO2Q35frWBrTUCZruoBBOJ6jyiGYX0=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "8261656e38a36db74a0bb2aecc10c662fc221630",
+        "rev": "7a1e528b626575af23c555fa668401b2a48ce123",
         "type": "github"
       },
       "original": {
@@ -94,11 +94,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1790481482,
-        "narHash": "sha256-pUEN1oBAbxbUKZRzGHrBd2O2ODXPrdeYG94qWyAcsI8=",
+        "lastModified": 1793513188,
+        "narHash": "sha256-4iVYCeWSFdXY+oUpBv4cdLDSHUW0ZyUIl/fvT7/O8jw=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "aa90067be3657ec80984a57f096a1ad1c7611beb",
+        "rev": "afac45a3d88a17286b67103ad30708dc3c123975",
         "type": "github"
       },
       "original": {
@@ -110,11 +110,11 @@
     "homebrew-tap-duongductrong-snapzy": {
       "flake": false,
       "locked": {
-        "lastModified": 1790351511,
-        "narHash": "sha256-eknCxJ2CKTWvMxn+Ejo7VpBnrRwwylQlRJyLV1q0ZnM=",
+        "lastModified": 1793175065,
+        "narHash": "sha256-H21qJ5JQrof8JM69nj3vdfkRAxBdRZLJUyrzeCH51dQ=",
         "ref": "refs/heads/master",
-        "rev": "7d5d5b384ebcbdd45a3aa81fe501f6b7eac57ea1",
-        "revCount": 1268,
+        "rev": "77d3d3feb7f46d1909dce8824f3b35d5709378a2",
+        "revCount": 1355,
         "type": "git",
         "url": "https://github.com/duongductrong/Snapzy.git"
       },
@@ -139,14 +139,30 @@
         "type": "github"
       }
     },
+    "homebrew-tap-jurplel": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791225645,
+        "narHash": "sha256-DVsMtsHbs91u+dWOLpIbQtqVrb4Z8IsW/G+jyM1EwO8=",
+        "owner": "jurplel",
+        "repo": "homebrew-tap",
+        "rev": "772158225ff2cfa7606c2280fff0ce159f59bc86",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jurplel",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "homebrew-tap-tinypkg": {
       "flake": false,
       "locked": {
-        "lastModified": 1790481417,
-        "narHash": "sha256-3S9Hv1N/yX4q7dKc8EgRZm6SzU/dzcNjagMIX4+ZXZM=",
+        "lastModified": 1793502561,
+        "narHash": "sha256-0Jtp43iqM6OfEqdxqiBknCXEfJ+sweYHerktOwfRqAo=",
         "owner": "tinypkg",
         "repo": "homebrew-tap",
-        "rev": "dff3e12fa0bc2d82f4624b801366d8ae06eb6064",
+        "rev": "12127dcf995ed2d5639252b43c8e29e756e989ab",
         "type": "github"
       },
       "original": {
@@ -186,11 +202,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1786845137,
-        "narHash": "sha256-oQFip+v0luP8NIxJzmiW4Wu8bILsbFWom5l0zonl8hQ=",
+        "lastModified": 1793418699,
+        "narHash": "sha256-+RpTlcdh9KqZ+ZiLkNSTvibQWm935EcIdBzRPCTFsrQ=",
         "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "4cff07de74b50e64bdd68cd4e722ab5b6b35ee48",
+        "rev": "ff0e21a414d4547183396da1b44a66f2577b65e9",
         "type": "github"
       },
       "original": {
@@ -225,11 +241,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790484467,
-        "narHash": "sha256-91r64q79kYZT8Y+sr7Rdrw09l7de8xFUoHHDkmaeTOs=",
+        "lastModified": 1793510715,
+        "narHash": "sha256-JzQi1UkhQ+LTRDikDe/WRVWWjMKUb6N6M7rvzbUaIhw=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "329083cd32e0afb6e51744421c9f0f71122c3ca1",
+        "rev": "70a6f36857a37163337d4a9cbeebc477b43861df",
         "type": "github"
       },
       "original": {
@@ -240,11 +256,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1790480522,
-        "narHash": "sha256-fXrm/q9klVBtVq5rGQ+XpI/dokPuSB15ZK2CZvWxXOk=",
+        "lastModified": 1793466162,
+        "narHash": "sha256-pt+peAEoOK3lLLdtbnQ1AGIBTZbdB6jrkgmurfcQwig=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8d5d270900d3fc75655ea2d9d248b234f6631439",
+        "rev": "a0788123ada57ec92a79ab2581cda6d3c6cca75f",
         "type": "github"
       },
       "original": {
@@ -261,6 +277,7 @@
         "homebrew-core": "homebrew-core",
         "homebrew-tap-duongductrong-snapzy": "homebrew-tap-duongductrong-snapzy",
         "homebrew-tap-jorgelbg": "homebrew-tap-jorgelbg",
+        "homebrew-tap-jurplel": "homebrew-tap-jurplel",
         "homebrew-tap-tinypkg": "homebrew-tap-tinypkg",
         "mac-app-util": "mac-app-util",
         "nix-darwin": "nix-darwin",
@@ -277,11 +294,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790247521,
-        "narHash": "sha256-TNfgoHsqsYYvaJImlWctfRkh4PseTagzegU1Dgdbehw=",
+        "lastModified": 1793052255,
+        "narHash": "sha256-Y/JIHTnMlOabDfyaSBubWGLDIVGihLEUuoMhFvQKaDo=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "2bd00bd9bb35fe6d114888c8f1c2e946c541dd8f",
+        "rev": "60182817ee048ac94b4c68ea76d5ef2e8aac730d",
         "type": "github"
       },
       "original": {

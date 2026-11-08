@@ -15,9 +15,9 @@
     ./gnupg.nix
   ];
   home.packages = with pkgs; [
-    jetbrains-toolbox mpv  google-chrome prismlauncher
-    cc-switch claude-code codex moonlight-qt
-    # virt-manager - broken
+    mpv  google-chrome prismlauncher jetbrains-toolbox
+    cc-switch claude-code codex moonlight-qt jetbrains-toolbox
+    # virt-manager  - broken
   ];
 
 }

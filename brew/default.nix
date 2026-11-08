@@ -31,6 +31,7 @@ in
       "ungoogled-chromium"
       "helium-browser"
       "duckduckgo"
+      "linearmouse"
     ];
   };
   

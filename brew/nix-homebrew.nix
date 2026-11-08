@@ -4,6 +4,7 @@
     ./taps/tinypkg.nix
     ./taps/snapzy.nix
     ./taps/jorgelbg.nix
+    ./taps/jurplel.nix
   ];
 
   nix-homebrew = {

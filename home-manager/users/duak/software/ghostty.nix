@@ -18,6 +18,10 @@
       auto-update = "off";
       # shell-integration-features = ( builtins.concatStringsSep "," [ "no-cursor" "no-sudo" "title" "no-ssh-env" "no-ssh-terminfo" "no-path" ] ); 
       shell-integration-features = "no-cursor";
+      keybind = [
+        "shift+left=previous_tab"
+        "shift+right=next_tab"
+      ];
     };
   };
 }

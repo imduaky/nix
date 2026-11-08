@@ -15,6 +15,7 @@
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "${hostPlatform}";
+
   
   # since we starting use Determinate Nix,
   # disable this to prevent the upstream nix daemon start
