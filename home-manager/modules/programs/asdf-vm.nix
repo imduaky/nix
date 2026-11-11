@@ -64,16 +64,47 @@ in
     };
 
     home.activation.installAsdfPlugins = let
-      pluginAddCmds = lib.mapAttrsToList (name: url: ''
+      pluginNames = lib.unique (builtins.attrNames cfg.plugins ++ builtins.attrNames cfg.toolVersions);
+      pluginAddCmds = map (name: let
+        urlArg = lib.optionalString (builtins.hasAttr name cfg.plugins) " \"${cfg.plugins.${name}}\"";
+      in ''
         if ! ${cfg.package}/bin/asdf plugin list 2>/dev/null | ${pkgs.gnugrep}/bin/grep -Fxq "${name}"; then
-          ${cfg.package}/bin/asdf plugin add "${name}" "${url}"
+          ${cfg.package}/bin/asdf plugin add "${name}"${urlArg}
         fi
-      '') cfg.plugins;
+      '') pluginNames;
     in lib.hm.dag.entryAfter ["writeBoundary"] (
-      lib.optionalString (cfg.plugins != {}) ''
+      lib.optionalString (pluginNames != []) ''
         export ASDF_DIR="${config.home.homeDirectory}/.asdf"
         export ASDF_DATA_DIR="$ASDF_DIR"
+        export PATH="${lib.makeBinPath [ pkgs.bash pkgs.coreutils pkgs.curl pkgs.gnugrep pkgs.gnutar pkgs.gzip pkgs.perl pkgs.unzip ]}:$PATH"
         ${lib.concatStringsSep "\n" pluginAddCmds}
+        for plugin_dir in "$ASDF_DATA_DIR"/plugins/*; do
+          [ -d "$plugin_dir" ] || continue
+          if ${pkgs.git}/bin/git -C "$plugin_dir" rev-parse --git-dir >/dev/null 2>&1; then
+            if ! ${pkgs.git}/bin/git -C "$plugin_dir" pull --ff-only --quiet >/dev/null 2>&1; then
+              printf 'asdf: plugin update failed: %s\n' "''${plugin_dir##*/}"
+            fi
+          fi
+        done
+      ''
+    );
+
+    home.activation.installAsdfVersions = lib.hm.dag.entryAfter [ "installAsdfPlugins" ] (
+      lib.optionalString (cfg.toolVersions != {}) ''
+        export ASDF_DIR="${config.home.homeDirectory}/.asdf"
+        export ASDF_DATA_DIR="$ASDF_DIR"
+        export PATH="${lib.makeBinPath [ pkgs.bash pkgs.coreutils pkgs.curl pkgs.gnugrep pkgs.gnutar pkgs.gzip pkgs.perl pkgs.unzip ]}:$PATH"
+        installAsdfVersion() {
+          local plugin="$1" version="$2" install_output install_status
+          if install_output=$(${cfg.package}/bin/asdf install "$plugin" "$version" 2>&1); then
+            printf '%s\n' "$install_output" | ${pkgs.gnused}/bin/sed '/^version .* is already installed$/d; /%/d; s/^/asdf: /'
+          else
+            install_status=$?
+            printf '%s\n' "$install_output" | ${pkgs.gnused}/bin/sed '/^version .* is already installed$/d; /%/d; s/^/asdf: /'
+            return "$install_status"
+          fi
+        }
+        ${lib.concatStringsSep "\n" (lib.mapAttrsToList (plugin: version: "installAsdfVersion \"${plugin}\" \"${version}\"") cfg.toolVersions)}
       ''
     );
 
@@ -87,7 +118,7 @@ in
           done
         '') cfg.toolVersions;
       in  
-        lib.hm.dag.entryAfter [ "installAsdfPlugins" ] (
+        lib.hm.dag.entryAfter [ "installAsdfVersions" ] (
           lib.optionalString (cfg.toolVersions != {}) ''
             export ASDF_DIR="${config.home.homeDirectory}/.asdf"
             export ASDF_DATA_DIR="$ASDF_DIR"

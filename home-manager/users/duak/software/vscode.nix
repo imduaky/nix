@@ -56,26 +56,47 @@ in
     ];
   
   programs.vscodium.profiles.default = {
+    keybindings = [
+      {
+        command = "editor.action.triggerSuggest";
+        key = "cmd+,";
+        when = "textInputFocus";
+      }
+      {
+        key =  "cmd+,";
+        command = "-workbench.action.openSettings";
+      }
+    ];
     userSettings = {
+      ## update
       "files.autoSave" = "off";
       "update.mode" = "none";
-
-      ## Extension
       "extensions.autoCheckUpdates" = false;
       "extensions.autoUpdate" = "off";
 
       ## Editor
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
       "editor.formatOnSave" = true;
+      # auto change html tag sync
+      "editor.linkedEditing" = true;
       "editor.fontSize" = 17;
       "editor.lineNumbers" = "on";
       "editor.detectIndentation" = false;
       "editor.tabSize" = 2;
       "editor.wordWrap" = "wordWrapColumn";
+      "editor.tabCompletion" = "off";
+      "editor.quickSuggestions" = {
+        other = true;
+        comments = true;
+        strings = true; 
+      };
+      "editor.suggest.localityBonus" = true;
+      "editor.parameterHints.enabled" = true;
+
       ## Workbench
       "workbench.iconTheme" = "vs-nomo-dark";
-      # "workbench.colorTheme" = "Visual Studio Dark";
       "workbench.colorTheme" = "Dark+";
+      "workbench.editor.languageDetection" = true;
       ## Terminal
       "terminal.integrated.defaultProfile.osx" = "bash";
       "terminal.integrated.shellIntegration.enabled" = false;
@@ -88,6 +109,10 @@ in
       "js/ts.inlayHints.parameterTypes.enabled" = true;
       "js/ts.inlayHints.variableTypes.enabled" = true;
       "js/ts.inlayHints.functionLikeReturnTypes.enabled" = true;
+      "js/ts.suggest.autoImports" = true;
+      "js/ts.preferences.importModuleSpecifier" = "project-relative";
+      "js/ts.updateImportsOnFileMove.enabled" = "always";
+      "js/ts.preferences.includePackageJsonAutoImports" = "auto";
       ## plguin
       "redhat.telemetry.enabled" = false;
       "json.schemaDownload.trustedDomains" = {
@@ -143,6 +168,7 @@ in
       "tailwindCSS.experimental.classRegex" = [["className\\s*:\\s*['\"]([^'\"]*)['\"]"]];
     };
   };
+
   home.file."Library/Application Support/VSCodium/product.json" = {
     enable = true;
     # enbale vscode marketplace
@@ -157,3 +183,4 @@ in
     });
   };
 }
+

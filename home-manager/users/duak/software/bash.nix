@@ -22,6 +22,7 @@ in
     l="ls";
     grep="grep --color=auto";
     rebuildnix="sudo darwin-rebuild switch --flake ~/.config/nix#${hostName}";
+    cleannix="sudo -H -u root nix-env --profile /nix/var/nix/profiles/system --delete-generations +10 && sudo -H -u root nix-collect-garbage -d && sudo -H -u root nix store gc";
     getaddr="dscacheutil -q host -a name";
   };
 

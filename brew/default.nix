@@ -23,6 +23,7 @@ in
     };
 
     brews = [
+      "mole"
     ];
     casks = [
       "macdown"
