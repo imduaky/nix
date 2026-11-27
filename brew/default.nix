@@ -23,7 +23,7 @@ in
     };
 
     brews = [
-      "mole"
+      # "mole"
     ];
     casks = [
       "macdown"
@@ -31,8 +31,9 @@ in
       "telegram"
       "ungoogled-chromium"
       "helium-browser"
-      "duckduckgo"
       "linearmouse"
+      "magpie"
+      "utm"
     ];
   };
   

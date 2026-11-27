@@ -16,8 +16,9 @@
   ];
   home.packages = with pkgs; [
     mpv  google-chrome prismlauncher jetbrains-toolbox
-    cc-switch claude-code codex moonlight-qt jetbrains-toolbox
-    # virt-manager  - broken
+    claude-code codex moonlight-qt jetbrains-toolbox
+    virt-manager
+    # virt-manager cc-switch - broken
   ];
 
 }

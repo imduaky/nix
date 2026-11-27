@@ -8,14 +8,17 @@ let
   marketplace = pkgs-vscode-overlay.vscode-marketplace;
 in
 {
-  programs.vscodium.enable = true;
-  programs.vscodium.package = pkgs.vscodium;
-  programs.vscodium.mutableExtensionsDir = false;
+  programs.vscode.enable = true;
+  programs.vscode.package = pkgs.vscode;
+  programs.vscode.mutableExtensionsDir = false;
   # may need manually run once command after added a new plugin:
   # `rm -r ~/.vscode/extension && rebuildnix`
   # See: https://github.com/nix-community/home-manager/issues/7880
-  # programs.vscodium.profiles.default.extensions = with inputs.nix-vscode-extensions.extensions."${hostPlatform}".vscode-marketplace; [
-  programs.vscodium.profiles.default.extensions = with marketplace; [
+  # programs.vscode.profiles.default.extensions = with inputs.nix-vscode-extensions.extensions."${hostPlatform}".vscode-marketplace; [
+  programs.vscode.profiles.default.extensions = with marketplace; [
+      # c/cpp
+      ms-vscode.cpptools ms-vscode.cmake-tools ms-vscode.cpptools-themes ms-vscode.cpp-devtools llvm-vs-code-extensions.vscode-clangd
+     ] ++ [
       # vue
       vue.volar 
     ] ++ [ 
@@ -34,13 +37,14 @@ in
       liuchao.go-struct-tag
       maracko.json-to-go
     ] ++ [
-      # python -broken
+      # python
       ms-python.python  ms-python.debugpy 
       ms-python.vscode-python-envs kevinrose.vsc-python-indent
     ] ++ [
       # toolchain
       ms-vscode.makefile-tools docker.docker dbaeumer.vscode-eslint
       ritwickdey.liveserver jock.svg bradlc.vscode-tailwindcss
+      ms-vscode-remote.remote-ssh
       
       # # config
       redhat.vscode-yaml tamasfe.even-better-toml
@@ -55,7 +59,7 @@ in
       # anthropic.claude-code
     ];
   
-  programs.vscodium.profiles.default = {
+  programs.vscode.profiles.default = {
     keybindings = [
       {
         command = "editor.action.triggerSuggest";
@@ -83,7 +87,7 @@ in
       "editor.lineNumbers" = "on";
       "editor.detectIndentation" = false;
       "editor.tabSize" = 2;
-      "editor.wordWrap" = "wordWrapColumn";
+      "editor.wordWrap" = "on";
       "editor.tabCompletion" = "off";
       "editor.quickSuggestions" = {
         other = true;
@@ -148,6 +152,16 @@ in
          "editor.insertSpaces" = false;
          "editor.tabSize" = 2;
       };
+      "[c]" = {
+         "editor.defaultFormatter" = "llvm-vs-code-extensions.vscode-clangd";
+         "editor.insertSpaces" = false;
+         "editor.tabSize" = 4;
+      };
+      "[cpp]" = {
+         "editor.defaultFormatter" = "llvm-vs-code-extensions.vscode-clangd";
+         "editor.insertSpaces" = false;
+         "editor.tabSize" = 4;
+      };
       "yaml.schemas" = {
         "https://squidfunk.github.io/mkdocs-material/schema.json" = "mkdocs.yml";
       };
@@ -166,21 +180,12 @@ in
       "docker.lsp.telemetry" = "off";
       # tailwind
       "tailwindCSS.experimental.classRegex" = [["className\\s*:\\s*['\"]([^'\"]*)['\"]"]];
-    };
-  };
+      # ssh
+      "remote.SSH.configFile" = "${config.home.homeDirectory}/.ssh/vscode.config";
 
-  home.file."Library/Application Support/VSCodium/product.json" = {
-    enable = true;
-    # enbale vscode marketplace
-    # https://gist.github.com/anxkhn/9ae7b2248999168b73f303dec5851460
-    text = (builtins.toJSON { 
-      extensionsGallery = {
-        serviceUrl = "https://marketplace.visualstudio.com/_apis/public/gallery";
-        itemUrl = "https://marketplace.visualstudio.com/items";
-        cacheUrl = "https://vscode.blob.core.windows.net/gallery/index";
-        controlUrl = "";
-      };
-    });
+      # c/cpp
+       "C_Cpp.intelliSenseEngine" = "disabled";
+    };
   };
 }
 
